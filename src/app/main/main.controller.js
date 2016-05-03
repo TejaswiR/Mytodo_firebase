@@ -9,7 +9,7 @@
   function MainController($resource) {
     var vm = this;
     vm.todos = [];
-    var resourceObj = $resource('https://glaring-heat-4342.firebaseio.com/Tasks.json');
+    var resourceObj = $resource('https://blazing-heat-8489.firebaseio.com/teju.json');
     var getResp = resourceObj.get({isArray:true});
     getResp.$promise.then(function(resp){
       console.log(resp);
@@ -22,7 +22,7 @@
     })
     // console.log(vm.todos);
     vm.addTodo = function(){
-    var resourceObj = $resource('https://glaring-heat-4342.firebaseio.com/Tasks.json');
+    var resourceObj = $resource('https://blazing-heat-8489.firebaseio.com/teju.json');
     var resp = resourceObj.save(vm.todo);
     resp.$promise.then(function(resp){
       // Success part
