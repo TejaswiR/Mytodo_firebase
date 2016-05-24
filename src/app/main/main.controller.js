@@ -25,6 +25,7 @@
     var resourceObj = $resource('https://blazing-heat-8489.firebaseio.com/teju.json');
     var resp = resourceObj.save(vm.todo);
     resp.$promise.then(function(resp){
+      vm.todo.id = resp.name
       // Success part
       console.log('Added tasks'); 
       console.log(resp);
@@ -34,7 +35,14 @@
       console.log(error);
     });
     
-    }
   }
+
+    vm.removeTodo = function(id){
+      var resourceObj = $resource('https://blazing-heat-8489.firebaseio.com/teju/'+id+'.json');
+      var rsp = resourceObj.delete();
+    }
+  
+}
+
 
 })();
