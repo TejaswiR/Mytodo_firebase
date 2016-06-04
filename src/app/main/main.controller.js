@@ -40,9 +40,22 @@
     vm.removeTodo = function(id){
       var resourceObj = $resource('https://blazing-heat-8489.firebaseio.com/teju/'+id+'.json');
       var rsp = resourceObj.delete();
+      rsp.$promise.then(function(res){
+      console.log('Deleted successfully');
+        vm.todos.splice(getIndex(id));
+    },function(err){
+      console.log("Error in removing task");
+    });
     }
-  
-}
+
+    function getIndex(id){
+      for(var i=0;i<vm.todos.length;i++){
+          if(vm.todos[i].id === id){
+            return i;
+          }
+      }
+    }
+  }
 
 
 })();
