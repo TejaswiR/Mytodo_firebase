@@ -12,7 +12,7 @@
     var resourceObj = $resource('https://blazing-heat-8489.firebaseio.com/teju.json');
     var getResp = resourceObj.get({isArray:true});
     getResp.$promise.then(function(resp){
-      console.log(resp);
+      // console.log(resp);
       angular.forEach(resp,function(task){
         // console.log(task);
         vm.todos.push(task);
@@ -20,7 +20,6 @@
     },function(){
 
     })
-    // console.log(vm.todos);
     vm.addTodo = function(){
     var resourceObj = $resource('https://blazing-heat-8489.firebaseio.com/teju.json');
     var resp = resourceObj.save(vm.todo);
@@ -28,7 +27,7 @@
       vm.todo.id = resp.name
       // Success part
       console.log('Added tasks'); 
-      console.log(resp);
+      // console.log(resp);
       vm.todos.push(vm.todo);
     },function(error){
       // Error part
